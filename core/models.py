@@ -69,6 +69,28 @@ class Cargo(Base):
         return self.cargo
 
 
+class PrecoServico(Base):
+    ICONE_CHOICES = (
+        ('lni-package', 'Caixa'),
+        ('lni-drop', 'Drop'),
+        ('lni-star', 'Estrela')
+    )
+    icone = models.CharField('Icone', max_length=12, choices=ICONE_CHOICES)
+    valor = models.DecimalField('Preço', max_digits=10, decimal_places=2) #*
+    titulo = models.CharField('Titulo', max_length=50)
+    usuarios = models.IntegerField('Usuários', max_length=10)
+    gbStorage = models.CharField('Armazenamento', max_length=100)
+    tipeEmailSuport = models.CharField('Estatus de Email Suporte', max_length=25)
+    lifetimeUpdates = models.BooleanField('LifetimesUpdates', default=True)
+
+    class Meta:
+        verbose_name = 'PreçoServiço'
+        verbose_name_plural = 'PreçoServiços'
+
+    def __str__(self):
+        return self.titulo
+
+
 class Funcionario(Base):
     nome = models.CharField('Nome', max_length=100)
     cargo = models.ForeignKey('core.Cargo', verbose_name='Cergo', on_delete=models.CASCADE)

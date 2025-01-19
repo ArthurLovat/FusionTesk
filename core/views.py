@@ -1,6 +1,7 @@
 from django.views.generic import TemplateView
 
-from .models import Servico, Funcionario, Feature
+from .models import Servico, Funcionario, Feature, PrecoServico
+
 
 class IndexView(TemplateView):
     template_name = 'index.html'
@@ -10,5 +11,6 @@ class IndexView(TemplateView):
         context['servicos'] = Servico.objects.order_by('?').all()
         context['equipe'] = Funcionario.objects.order_by('?').all()
         context['features'] = Feature.objects.order_by('?').all()
+        context['precos'] = PrecoServico.objects.all()
         return context
 
