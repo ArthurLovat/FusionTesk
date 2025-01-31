@@ -138,7 +138,7 @@ STATICFILES_DIRS = [ BASE_DIR  /  'static', ]
 MEDIA_ROOT = BASE_DIR / 'media'
 
 #email teste console
-#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 '''
 # email produção
 

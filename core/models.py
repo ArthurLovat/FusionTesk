@@ -2,6 +2,8 @@ import uuid
 from email.policy import default
 from django.db import models
 from stdimage.models import StdImageField
+from PIL import Image
+Resampling = getattr(Image, 'Resampling', Image.LANCZOS)
 
 
 def get_file_path(_instamce, filename):
@@ -18,7 +20,7 @@ class Base(models.Model):
         abstract = True
 
 
-class Feature(Base):
+class Feature(Base):                    #TESTADO
     ICONE_CHOICES = (
         ('lni-rocket', 'Foguete'),
         ('lni-laptop-phone', 'Notebook'),
@@ -37,7 +39,7 @@ class Feature(Base):
     def __str__(self):
         return self.feature
 
-class Servico(Base):
+class Servico(Base):                    #TESTADO
     ICONE_CHOICES = (
         ('lni-cog', 'Engrenagem'),
         ('lni-stats-up', 'Gráfico'),
@@ -58,7 +60,7 @@ class Servico(Base):
         return self.servico
 
 
-class Cargo(Base):
+class Cargo(Base):                  #TESTADO
     cargo = models.CharField('Cargo', max_length=100)
 
     class Meta:
@@ -69,7 +71,7 @@ class Cargo(Base):
         return self.cargo
 
 
-class PrecoServico(Base):
+class PrecoServico(Base):           #TESTADO
     ICONE_CHOICES = (
         ('lni-package', 'Caixa'),
         ('lni-drop', 'Drop'),
@@ -91,7 +93,7 @@ class PrecoServico(Base):
         return self.titulo
 
 
-class Funcionario(Base):
+class Funcionario(Base):              #TESTADO
     nome = models.CharField('Nome', max_length=100)
     cargo = models.ForeignKey('core.Cargo', verbose_name='Cergo', on_delete=models.CASCADE)
     bio = models.TextField('Bio', max_length=200)
